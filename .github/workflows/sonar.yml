@@ -18,7 +18,7 @@ jobs:
           fetch-depth: 0
 
       - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-scan-action@master
+        uses: sonarsource/sonarcloud-scan-action@v2
         with:
           projectKey: asifrazadev_NovaCV
           organization: asifrazadev
@@ -27,7 +27,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: SonarCloud Quality Gate Check
-        uses: sonarsource/sonarcloud-quality-gate-action@master
+        uses: sonarsource/sonarcloud-quality-gate-action@v1
         timeout-minutes: 5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
