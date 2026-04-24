@@ -10,31 +10,31 @@ export default async function LoginPage(props: { searchParams: Promise<{ message
   const searchParams = await props.searchParams
 
   return (
-    <div className="flex min-h-[dvh] bg-background">
+    <div className="flex min-h-[100dvh] bg-background">
       {/* ── Left branding panel ── */}
-      <div className="hidden lg:flex w-[55%] bg-primary flex-col justify-between p-12 text-primary-foreground relative overflow-hidden">
-        <div className="relative z-10 flex items-center font-bold text-3xl tracking-widest">
-          NovaCV<span className="text-blue-500">.</span>
+      <div className="hidden lg:flex w-[55%] bg-blue-600 dark:bg-blue-700 flex-col justify-between p-12 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-500 to-indigo-700 -z-0" />
+
+        <div className="relative z-10 flex items-center font-bold text-3xl tracking-tighter">
+          NovaCV<span className="text-blue-200">.</span>
         </div>
 
         <div className="relative z-10 space-y-6 max-w-lg">
-          <h1 className="text-7xl font-bold tracking-tight">
-            Login page
+          <h1 className="text-8xl font-black tracking-tighter leading-tight">
+            Login
           </h1>
-          <p className="text-4xl text-zinc-300 font-light italic">
-            Welcome back
-            <br />
-            <span className="not-italic font-normal">to your journey</span>
+          <p className="text-3xl text-blue-100 font-medium leading-relaxed opacity-90">
+            Welcome back to your professional journey.
           </p>
         </div>
 
-        <div className="relative z-10 text-sm text-zinc-500">
-          © {new Date().getFullYear()} NovaCV Inc.
+        <div className="relative z-10 text-sm text-blue-200/60 font-medium">
+          © {new Date().getFullYear()} NovaCV. Built for developers.
         </div>
 
-        {/* Decorative elements for the dark background */}
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-blue-600/10 blur-[100px]" />
-        <div className="absolute bottom-[20%] right-[-20%] w-[50%] h-[50%] rounded-full bg-indigo-600/10 blur-[100px]" />
+        {/* Decorative elements */}
+        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-white/10 blur-[120px] animate-pulse" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-400/20 blur-[100px]" />
       </div>
 
       {/* ── Right form pane ── */}
@@ -52,7 +52,7 @@ export default async function LoginPage(props: { searchParams: Promise<{ message
           <form action={login} className="space-y-6">
             <div className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="login-email" className="text-sm font-medium">Email</Label>
+                <Label htmlFor="login-email" className="text-sm font-bold text-foreground">Email Address</Label>
                 <Input
                   id="login-email"
                   name="email"
@@ -60,22 +60,24 @@ export default async function LoginPage(props: { searchParams: Promise<{ message
                   placeholder="name@example.com"
                   required
                   autoComplete="email"
+                  className="h-12 bg-muted/50 border-border/50 focus:bg-background transition-all"
                 />
               </div>
 
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <Label htmlFor="login-password" className="text-sm font-medium">Password</Label>
-                  <Link href="#" className="text-sm font-medium text-blue-600 hover:text-blue-500">
+                  <Label htmlFor="login-password" className="text-sm font-bold text-foreground">Password</Label>
+                  <Link href="#" className="text-sm font-bold text-blue-600 hover:text-blue-500">
                     Forgot?
                   </Link>
                 </div>
                 <PasswordInput
                   id="login-password"
                   name="password"
-                  placeholder="Enter your password"
+                  placeholder="••••••••"
                   required
                   autoComplete="current-password"
+                  className="h-12 bg-muted/50 border-border/50 focus:bg-background transition-all"
                 />
               </div>
             </div>
@@ -89,7 +91,7 @@ export default async function LoginPage(props: { searchParams: Promise<{ message
             )}
           </form>
 
-{/*           <form action={signInWithProvider} className="space-y-4">
+          {/*           <form action={signInWithProvider} className="space-y-4">
             <Button type="submit" name="provider" value="google" variant="outline" className="w-full bg-blue-50/50 hover:bg-blue-50 text-blue-900 border-blue-100 font-semibold h-10 dark:bg-blue-950/20 dark:text-blue-100 dark:border-blue-900">
               <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />

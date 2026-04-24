@@ -12,29 +12,29 @@ export default async function RegisterPage(props: { searchParams: Promise<{ mess
   return (
     <div className="flex h-dvh bg-background">
       {/* ── Left branding panel ── */}
-      <div className="hidden lg:flex w-[55%] bg-primary flex-col justify-between p-12 text-primary-foreground relative overflow-hidden">
-        <div className="relative z-10 flex items-center font-bold text-3xl tracking-widest">
-          NovaCV<span className="text-blue-500">.</span>
+      <div className="hidden lg:flex w-[55%] bg-blue-600 dark:bg-blue-700 flex-col justify-between p-12 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-700 via-blue-600 to-blue-500 -z-0" />
+        
+        <div className="relative z-10 flex items-center font-bold text-3xl tracking-tighter">
+          NovaCV<span className="text-blue-200">.</span>
         </div>
 
         <div className="relative z-10 space-y-6 max-w-lg">
-          <h1 className="text-7xl font-bold tracking-tight">
-            Register page
+          <h1 className="text-8xl font-black tracking-tighter leading-tight">
+            Join Us
           </h1>
-          <p className="text-4xl text-zinc-300 font-light italic">
-            Start your journey
-            <br />
-            <span className="not-italic font-normal">now with us</span>
+          <p className="text-3xl text-blue-100 font-medium leading-relaxed opacity-90">
+            Start your journey towards the perfect career.
           </p>
         </div>
 
-        <div className="relative z-10 text-sm text-zinc-500">
-          © {new Date().getFullYear()} NovaCV Inc.
+        <div className="relative z-10 text-sm text-blue-200/60 font-medium">
+          © {new Date().getFullYear()} NovaCV. Built for developers.
         </div>
 
-        {/* Decorative elements for the dark background */}
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-blue-600/10 blur-[100px]" />
-        <div className="absolute bottom-[20%] right-[-20%] w-[50%] h-[50%] rounded-full bg-indigo-600/10 blur-[100px]" />
+        {/* Decorative elements */}
+        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-white/10 blur-[120px] animate-pulse" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-blue-400/20 blur-[100px]" />
       </div>
 
       {/* ── Right form pane ── */}
@@ -52,7 +52,7 @@ export default async function RegisterPage(props: { searchParams: Promise<{ mess
           <form action={signup} className="space-y-6 relative ">
             <div className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="reg-name" className="text-sm font-medium">Full Name</Label>
+                <Label htmlFor="reg-name" className="text-sm font-bold text-foreground">Full Name</Label>
                 <Input
                   id="reg-name"
                   name="full_name"
@@ -60,11 +60,12 @@ export default async function RegisterPage(props: { searchParams: Promise<{ mess
                   placeholder="John Doe"
                   required
                   autoComplete="name"
+                  className="h-12 bg-muted/50 border-border/50 focus:bg-background transition-all"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="reg-email" className="text-sm font-medium">Email</Label>
+                <Label htmlFor="reg-email" className="text-sm font-bold text-foreground">Email Address</Label>
                 <Input
                   id="reg-email"
                   name="email"
@@ -72,18 +73,20 @@ export default async function RegisterPage(props: { searchParams: Promise<{ mess
                   placeholder="name@example.com"
                   required
                   autoComplete="email"
+                  className="h-12 bg-muted/50 border-border/50 focus:bg-background transition-all"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="reg-password" className="text-sm font-medium">Password</Label>
+                <Label htmlFor="reg-password" className="text-sm font-bold text-foreground">Password</Label>
                 <PasswordInput
                   id="reg-password"
                   name="password"
-                  placeholder="Enter your password"
+                  placeholder="••••••••"
                   required
                   minLength={6}
                   autoComplete="new-password"
+                  className="h-12 bg-muted/50 border-border/50 focus:bg-background transition-all"
                 />
               </div>
             </div>
