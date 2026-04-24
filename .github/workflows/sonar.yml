@@ -19,6 +19,12 @@ jobs:
 
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
+        with:
+          args: >
+            -Dsonar.organization=asifrazadev
+            -Dsonar.projectKey=asifrazadev_NovaCV
+            -Dsonar.python.version=3
+            -Dsonar.sources=src
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
