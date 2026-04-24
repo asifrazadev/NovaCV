@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { useRouter } from "next/navigation"
-import { Plus, X, Info } from "lucide-react"
+import { Plus, X, Info, Layout } from "lucide-react"
 import {
   Dialog,
   DialogContent,
@@ -95,7 +95,7 @@ export function CreateResumeDialog({ open, onOpenChange }: CreateResumeDialogPro
                   className="h-11"
                   required
                 />
-                <div className="flex items-start gap-2 p-3 rounded-lg bg-blue-50/50 dark:bg-blue-500/5 text-[13px] text-blue-700 dark:text-blue-400 border border-blue-100 dark:border-blue-500/20">
+                <div className="flex items-start gap-2 p-3 rounded-lg bg-primary/5 dark:bg-primary/10 text-primary border border-primary/20">
                   <Info className="w-4 h-4 mt-0.5 shrink-0" />
                   <p>
                     <span className="font-bold">Tip:</span> You can name the resume referring to the position you are applying for.
@@ -113,10 +113,10 @@ export function CreateResumeDialog({ open, onOpenChange }: CreateResumeDialogPro
                   className="h-11 font-mono text-xs"
                   readOnly
                 />
-                <p className="text-[12px] text-muted-foreground flex items-center gap-1.5 ml-1">
+                <div className="text-[12px] text-muted-foreground flex items-center gap-1.5 ml-1">
                   <span className="w-1 h-1 rounded-full bg-muted-foreground/50" />
                   This is a URL-friendly name for your resume.
-                </p>
+                </div>
               </div>
 
               <div className="space-y-2">
@@ -126,13 +126,13 @@ export function CreateResumeDialog({ open, onOpenChange }: CreateResumeDialogPro
                     <Badge
                       key={tag}
                       variant="secondary"
-                      className="gap-1.5 pl-2.5 pr-1.5 py-1 bg-blue-500/10 text-blue-600 dark:text-blue-400 hover:bg-blue-500/20 transition-colors border-none"
+                      className="gap-1.5 pl-2.5 pr-1.5 py-1 bg-primary/10 text-primary hover:bg-primary/20 transition-colors border-none"
                     >
                       {tag}
                       <button
                         type="button"
                         onClick={() => removeTag(tag)}
-                        className="hover:bg-blue-500/20 rounded-full p-0.5 transition-colors"
+                        className="hover:bg-primary/20 rounded-full p-0.5 transition-colors"
                       >
                         <X className="w-3 h-3" />
                       </button>
@@ -154,16 +154,16 @@ export function CreateResumeDialog({ open, onOpenChange }: CreateResumeDialogPro
                     type="button"
                     size="icon"
                     variant="ghost"
-                    className="absolute right-1 top-1 h-9 w-9 text-muted-foreground hover:text-blue-500"
+                    className="absolute right-1 top-1 h-9 w-9 text-muted-foreground hover:text-primary"
                     onClick={addTag}
                   >
                     <Plus className="w-4 h-4" />
                   </Button>
                 </div>
-                <p className="text-[12px] text-muted-foreground flex items-center gap-1.5 ml-1">
+                <div className="text-[12px] text-muted-foreground flex items-center gap-1.5 ml-1">
                   <span className="w-1 h-1 rounded-full bg-muted-foreground/50" />
                   Press <Badge variant="outline" className="text-[10px] px-1 h-4 py-0 font-normal">Enter</Badge> or <Badge variant="outline" className="text-[10px] px-1 h-4 py-0 font-normal">Comma</Badge> to add or save the current keyword.
-                </p>
+                </div>
                 <p className="text-[12px] text-muted-foreground mt-1 ml-1 opacity-80">
                   Tags can be used to categorize your resume by keywords.
                 </p>
@@ -176,7 +176,7 @@ export function CreateResumeDialog({ open, onOpenChange }: CreateResumeDialogPro
             <Button
               type="submit"
               disabled={isPending}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 shadow-lg shadow-blue-600/20"
+              className="bg-primary hover:bg-primary-dark text-primary-foreground px-8 shadow-lg shadow-primary/20 border-none"
             >
               {isPending ? "Creating..." : "Create Resume"}
             </Button>

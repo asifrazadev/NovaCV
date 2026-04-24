@@ -59,8 +59,8 @@ export function AnalysisSection() {
     setIsAnalyzing(false)
   }
 
-  const scoreColor = !result ? "text-blue-600" : result.score > 80 ? "text-green-600" : result.score > 60 ? "text-amber-500" : "text-red-500"
-  const scoreBg = !result ? "bg-blue-50 border-blue-100" : result.score > 80 ? "bg-green-50 border-green-100" : result.score > 60 ? "bg-amber-50 border-amber-100" : "bg-red-50 border-red-100"
+  const scoreColor = !result ? "text-primary" : result.score > 80 ? "text-green-600" : result.score > 60 ? "text-amber-500" : "text-red-500"
+  const scoreBg = !result ? "bg-primary/5 border-primary/20" : result.score > 80 ? "bg-green-50 border-green-100" : result.score > 60 ? "bg-amber-50 border-amber-100" : "bg-red-50 border-red-100"
 
   return (
     <div className="space-y-6">

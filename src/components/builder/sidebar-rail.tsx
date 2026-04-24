@@ -74,7 +74,7 @@ export function SidebarRail() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className={`h-10 w-10 transition-colors ${activeSection === item.id ? "bg-blue-100 text-blue-600 dark:bg-blue-900/40 dark:text-blue-400" : "text-muted-foreground hover:text-foreground"}`}
+                  className={`h-10 w-10 transition-colors ${activeSection === item.id ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground"}`}
                   onClick={() => setActiveSection(item.id)}
                 >
                   <item.icon className="h-5 w-5" />
@@ -94,7 +94,7 @@ export function SidebarRail() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className={`h-10 w-10 transition-colors ${activeSection === item.id ? "bg-blue-100 text-blue-600 dark:bg-blue-900/40 dark:text-blue-400" : "text-muted-foreground hover:text-foreground"}`}
+                  className={`h-10 w-10 transition-colors ${activeSection === item.id ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground"}`}
                   onClick={() => setActiveSection(item.id)}
                 >
                   <item.icon className="h-5 w-5" />

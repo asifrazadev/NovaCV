@@ -23,6 +23,7 @@ interface BuilderContextType {
   updateSectionItem: (sectionKey: keyof ResumeData["sections"], id: string, field: string, value: any) => void
   deleteSectionItem: (sectionKey: keyof ResumeData["sections"], id: string) => void
   updateMetadata: (field: keyof ResumeData["metadata"], value: any) => void
+  setTemplate: (templateId: string, defaultLayout: any) => void
   resumeId: string
   mobileView: "editor" | "preview"
   setMobileView: (view: "editor" | "preview") => void
@@ -185,12 +186,23 @@ export function BuilderProvider({
     }))
   }
 
+  const setTemplate = (templateId: string, defaultLayout: any) => {
+    setData(prev => ({
+      ...prev,
+      metadata: {
+        ...prev.metadata,
+        template: templateId,
+        layout: defaultLayout
+      }
+    }))
+  }
+
   const [mobileView, setMobileView] = React.useState<"editor" | "preview">("editor")
  
   return (
     <BuilderContext.Provider value={{ 
       data, setData, zoom, setZoom, activeSection, setActiveSection, title, setTitle, isSaving,
-      updateBasics, updatePicture, addSectionItem, updateSectionItem, deleteSectionItem, updateMetadata,
+      updateBasics, updatePicture, addSectionItem, updateSectionItem, deleteSectionItem, updateMetadata, setTemplate,
       resumeId, mobileView, setMobileView
     }}>
       {children}

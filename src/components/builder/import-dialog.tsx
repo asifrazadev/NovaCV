@@ -67,6 +67,9 @@ export function ImportDialog({ trigger }: ImportDialogProps) {
         })
         console.log(response)
         if (!response.success) {
+          if (response.error?.includes("503") || response.error?.includes("upstream")) {
+            throw new Error("The AI service is currently overloaded or unavailable. Please try again in a few minutes or upload a JSON/NovaCV file instead.")
+          }
           throw new Error(response.error || "Failed to process PDF.")
         }
 
@@ -83,8 +86,17 @@ export function ImportDialog({ trigger }: ImportDialogProps) {
         toast.error("Failed to parse the resume structure. Ensure it is valid.")
       }
     } catch (e: any) {
-      console.error(e)
-      toast.error(e.message || "An error occurred while importing.")
+      console.error("Import Error:", e)
+      const errorMessage = e.message || "An error occurred while importing."
+      
+      if (errorMessage.includes("AI Request Failed")) {
+        toast.error("AI Service Error", {
+          description: errorMessage,
+          duration: 5000,
+        })
+      } else {
+        toast.error(errorMessage)
+      }
     } finally {
       setIsProcessing(false)
     }
@@ -119,7 +131,7 @@ export function ImportDialog({ trigger }: ImportDialogProps) {
         >
           {isProcessing ? (
             <div className="flex flex-col items-center justify-center py-6">
-              <Loader2 className="w-8 h-8 animate-spin text-blue-600 mb-2" />
+              <Loader2 className="w-8 h-8 animate-spin text-primary mb-2" />
               <p className="text-sm font-medium">Processing File...</p>
               <p className="text-xs text-muted-foreground mt-1 text-center max-w-[250px]">
                 If this is a PDF, AI is currently extracting it. This might take 10-15 seconds.

@@ -64,7 +64,7 @@ export function ThemeSection() {
 
 /* ── Templates Section ── */
 export function TemplatesSection() {
-  const { data, updateMetadata } = useBuilder()
+  const { data, setTemplate } = useBuilder()
   const [templateSearch, setTemplateSearch] = React.useState("")
 
   const filteredTemplates = templates.filter(t =>
@@ -76,10 +76,18 @@ export function TemplatesSection() {
       <div className="relative"><Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" /><Input placeholder="Search templates..." className="pl-9 h-10" value={templateSearch} onChange={(e) => setTemplateSearch(e.target.value)} /></div>
       <div className="grid gap-4">
         {filteredTemplates.map(t => (
-          <button key={t.id} onClick={() => updateMetadata("template", t.id)} className={cn("flex flex-col p-4 rounded-xl border-2 transition-all text-left relative", data.metadata.template === t.id ? "border-blue-600 bg-blue-50/50" : "border-transparent bg-muted/30")}>
-            <div className="aspect-[3/4] rounded bg-white border border-black/5 mb-3 flex items-center justify-center text-[10px] font-bold opacity-30 uppercase">{t.name} Preview</div>
+          <button key={t.id} onClick={() => setTemplate(t.id, t.defaultLayout)} className={cn("flex flex-col p-4 rounded-xl border-2 transition-all text-left relative group", data.metadata.template === t.id ? "border-blue-600 bg-blue-50/50" : "border-transparent bg-muted/30 hover:bg-muted/50")}>
+            <div className="aspect-[3/4] w-full rounded-lg bg-white border border-black/5 mb-3 overflow-hidden relative shadow-sm transition-transform group-hover:scale-[1.02]">
+              {t.thumbnail ? (
+                <img src={t.thumbnail} alt={t.name} className="w-full h-full object-cover" />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-[10px] font-bold opacity-30 uppercase bg-muted/30">
+                  {t.name}
+                </div>
+              )}
+            </div>
             <h3 className="text-sm font-bold">{t.name}</h3>
-            {data.metadata.template === t.id && <div className="absolute top-4 right-4 h-5 w-5 rounded-full bg-blue-600 flex items-center justify-center"><Check className="w-3 h-3 text-white" /></div>}
+            {data.metadata.template === t.id && <div className="absolute top-6 right-6 h-5 w-5 rounded-full bg-blue-600 flex items-center justify-center shadow-lg z-10"><Check className="w-3 h-3 text-white" /></div>}
           </button>
         ))}
       </div>

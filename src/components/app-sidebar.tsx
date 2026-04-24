@@ -1,6 +1,6 @@
 "use client"
 
-import { FileText, User, Settings, ShieldCheck, Sparkles, LogOut } from "lucide-react"
+import { FileText, User, Settings, ShieldCheck, Sparkles, LogOut, Layout } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
@@ -63,11 +63,11 @@ export function AppSidebar() {
       className="border-r-0 !sticky top-0 shadow-sm relative overflow-hidden truncate"
     >
       <SidebarHeader className="pt-6 pb-2 px-4 flex flex-row items-center gap-2 z-10 bg-transparent overflow-hidden">
-        <div className="relative flex items-center justify-center p-1.5 bg-blue-600 rounded-lg shadow-lg shadow-blue-600/20 shrink-0">
-          <Sparkles className="w-4 h-4 text-white animate-pulse" />
+        <div className="relative flex items-center justify-center p-1.5 bg-primary rounded-lg shadow-lg shadow-primary/20 shrink-0">
+          <Sparkles className="w-5 h-5 text-primary-foreground" />
         </div>
-        <span className="font-bold text-xl tracking-widest text-foreground truncate">
-          NovaCV<span className="text-blue-500">.</span>
+        <span className="text-xl font-bold tracking-tight">
+          NovaCV<span className="text-primary">.</span>
         </span>
       </SidebarHeader>
 
@@ -87,13 +87,13 @@ export function AppSidebar() {
                       onClick={handleLinkClick}
                       className={`h-11 px-3 transition-all duration-200 rounded-md
                         ${isActive
-                          ? 'bg-blue-50 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 font-semibold shadow-sm ring-1 ring-blue-500/20'
+                          ? 'bg-primary/10 dark:bg-primary/10 text-primary font-semibold shadow-sm ring-1 ring-primary/20'
                           : 'text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground'
                         }`}
                       isActive={isActive}
                     >
                       <Link href={item.url}>
-                        <Icon className={`w-5 h-5 ${isActive ? "text-blue-600 dark:text-blue-400" : "text-muted-foreground"}`} />
+                        <Icon className={`w-5 h-5 ${isActive ? "text-primary" : "text-muted-foreground"}`} />
                         <span className="text-[14.5px]">{item.title}</span>
                       </Link>
                     </SidebarMenuButton>
@@ -124,7 +124,7 @@ export function AppSidebar() {
       </SidebarFooter>
 
       {/* Decorative Sidebar Background Gradient */}
-      <div className="absolute bottom-0 left-0 w-full h-[300px] bg-gradient-to-t from-blue-500/5 to-transparent pointer-events-none z-0" />
+      <div className="absolute bottom-0 left-0 w-full h-[300px] bg-gradient-to-t from-primary/5 to-transparent pointer-events-none z-0" />
     </Sidebar>
   )
 }

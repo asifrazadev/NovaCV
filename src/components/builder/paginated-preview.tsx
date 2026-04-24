@@ -50,10 +50,12 @@ export function PaginatedPreview({ data, zoom }: PaginatedPreviewProps) {
       const availableHeight = pageHeightPx - (paddingPx * 2)
 
       // 1. Get layout information
-      const defaultLayout = {
+      const templateDef = getTemplate(data.metadata?.template || "modern")
+      const defaultLayout = templateDef?.defaultLayout || {
         main: ["summary", "experience", "education", "projects", "volunteer", "publications", "references"],
         sidebar: ["skills", "languages", "interests", "awards", "certifications", "profiles"]
       }
+      
       const rawLayout = (data.metadata as any).layout
       const layout = {
         main: (rawLayout?.main && Array.isArray(rawLayout.main)) ? rawLayout.main : defaultLayout.main,
@@ -75,7 +77,7 @@ export function PaginatedPreview({ data, zoom }: PaginatedPreviewProps) {
       const headerHeight = header ? header.getBoundingClientRect().height + 32 : 0
 
       // 2. Process Columns
-      const isSingleColumn = data.metadata.template === "jake"
+      const isSingleColumn = data.metadata.template === "jake" || data.metadata.template === "executive"
       const mainHeights = [headerHeight]
       const sidebarHeights = [headerHeight]
 

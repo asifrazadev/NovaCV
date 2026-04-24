@@ -41,6 +41,9 @@ Do not return any markdown wrappers, just the raw JSON.`
 
     if (!response.ok) {
       const errorText = await response.text()
+      if (response.status === 503) {
+        throw new Error("AI service is currently unavailable (503). Please try again in a few minutes.")
+      }
       throw new Error(`AI Request Failed: ${response.status} ${errorText}`)
     }
 
@@ -151,6 +154,9 @@ Do NOT output markdown wrappers like \`\`\`json. Output ONLY the raw JSON object
 
     if (!response.ok) {
       const errorText = await response.text()
+      if (response.status === 503) {
+        throw new Error("AI service is currently unavailable (503). This usually means the provider is overloaded or undergoing maintenance. Please try again later.")
+      }
       throw new Error(`AI Request Failed: ${response.status} ${errorText}`)
     }
 

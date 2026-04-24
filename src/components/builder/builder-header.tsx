@@ -72,7 +72,7 @@ export function BuilderHeader() {
           <div className="hidden sm:flex items-center gap-1.5 ml-4 px-2 py-0.5 rounded-full bg-muted/50 text-[11px] font-medium text-muted-foreground shrink-0">
             {isSaving ? (
               <>
-                <Cloud className="w-3 h-3 animate-pulse text-blue-500" />
+                <Cloud className="w-3 h-3 animate-pulse text-primary" />
                 <span>Saving...</span>
               </>
             ) : (
@@ -94,7 +94,7 @@ export function BuilderHeader() {
           <DropdownMenuTrigger asChild>
             <Button
               size="sm"
-              className="gap-2 bg-blue-600 hover:bg-blue-700 min-w-[100px] hidden lg:flex"
+              className="gap-2 bg-primary hover:bg-primary-dark text-primary-foreground min-w-[100px] hidden lg:flex border-none"
               disabled={isExporting}
             >
               {isExporting ? (
@@ -117,7 +117,7 @@ export function BuilderHeader() {
               <span>Export as PDF</span>
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => handleExportBackup(".novacv")} className="gap-2 cursor-pointer">
-              <FileJson className="h-4 w-4 text-blue-500" />
+              <FileJson className="h-4 w-4 text-primary" />
               <div className="flex flex-col">
                 <span>Export Backup (.novacv)</span>
                 <span className="text-[10px] text-muted-foreground">NovaCV Proprietary Format</span>

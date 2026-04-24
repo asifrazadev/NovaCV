@@ -12,8 +12,8 @@ export default async function LoginPage(props: { searchParams: Promise<{ message
   return (
     <div className="flex min-h-[100dvh] bg-background">
       {/* ── Left branding panel ── */}
-      <div className="hidden lg:flex w-[55%] bg-blue-600 dark:bg-blue-700 flex-col justify-between p-12 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-500 to-indigo-700 -z-0" />
+      <div className="hidden lg:flex w-[55%] bg-primary dark:bg-primary-dark flex-col justify-between p-12 text-primary-foreground relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-primary to-primary-dark -z-0" />
 
         <div className="relative z-10 flex items-center font-bold text-3xl tracking-tighter">
           NovaCV<span className="text-blue-200">.</span>
@@ -23,7 +23,7 @@ export default async function LoginPage(props: { searchParams: Promise<{ message
           <h1 className="text-8xl font-black tracking-tighter leading-tight">
             Login
           </h1>
-          <p className="text-3xl text-blue-100 font-medium leading-relaxed opacity-90">
+          <p className="text-3xl text-primary-foreground/80 font-medium leading-relaxed opacity-90">
             Welcome back to your professional journey.
           </p>
         </div>
@@ -40,7 +40,7 @@ export default async function LoginPage(props: { searchParams: Promise<{ message
       {/* ── Right form pane ── */}
       <div className="w-full lg:w-[45%] flex flex-col justify-center items-center py-12 px-6 sm:px-8 relative">
         <div className="lg:hidden mb-3 z-20  w-full flex items-center justify-center font-bold text-3xl tracking-widest">
-          NovaCV<span className="text-blue-500">.</span>
+          NovaCV<span className="text-primary">.</span>
         </div>
 
         <div className="w-full max-w-md space-y-8 bg-card text-card-foreground p-8 sm:p-10 rounded-2xl shadow-xl border border-border/50 backdrop-blur-sm relative z-10">
@@ -67,7 +67,7 @@ export default async function LoginPage(props: { searchParams: Promise<{ message
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <Label htmlFor="login-password" className="text-sm font-bold text-foreground">Password</Label>
-                  <Link href="#" className="text-sm font-bold text-blue-600 hover:text-blue-500">
+                  <Link href="#" className="text-sm font-bold text-primary hover:text-primary-dark">
                     Forgot?
                   </Link>
                 </div>
@@ -92,7 +92,7 @@ export default async function LoginPage(props: { searchParams: Promise<{ message
           </form>
 
           {/*           <form action={signInWithProvider} className="space-y-4">
-            <Button type="submit" name="provider" value="google" variant="outline" className="w-full bg-blue-50/50 hover:bg-blue-50 text-blue-900 border-blue-100 font-semibold h-10 dark:bg-blue-950/20 dark:text-blue-100 dark:border-blue-900">
+            <Button type="submit" name="provider" value="google" variant="outline" className="w-full bg-primary/5 hover:bg-primary/10 text-primary border-primary/20 font-semibold h-10 dark:bg-primary-dark/20 dark:text-primary-foreground dark:border-primary/30">
               <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
                 <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
@@ -113,7 +113,7 @@ export default async function LoginPage(props: { searchParams: Promise<{ message
 
           <div className="flex justify-center items-center mt-6">
             <p className="text-sm text-muted-foreground mr-1">Don&apos;t have an account?</p>
-            <Link href="/register" className="text-sm font-semibold text-blue-600 hover:text-blue-800 dark:hover:text-blue-400">
+            <Link href="/register" className="text-sm font-semibold text-primary hover:text-primary-dark">
               Sign up
             </Link>
           </div>

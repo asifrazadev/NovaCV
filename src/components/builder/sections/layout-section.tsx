@@ -176,7 +176,7 @@ export function LayoutSection() {
         <DroppableColumn id="sidebar" items={sidebarItems} title="Sidebar Column" icon={Layout} />
 
         <div className="p-4 rounded-lg bg-muted/40 border border-muted text-[10px] text-muted-foreground leading-relaxed">
-          <p>Drag sections between columns. Columns will highlight in blue when you can drop items into them.</p>
+          <p>Drag sections between columns. Columns will highlight in the primary color when you can drop items into them.</p>
         </div>
       </div>
     </DndContext>
