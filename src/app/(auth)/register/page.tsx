@@ -5,8 +5,9 @@ import { Input } from '@/components/ui/input'
 import { PasswordInput } from '@/components/ui/password-input'
 import { Label } from '@/components/ui/label'
 import { FormMessageToast } from '@/components/form-message-toast'
+import { RegistrationSuccessModal } from '@/components/registration-success-modal'
 
-export default async function RegisterPage(props: { searchParams: Promise<{ message: string }> }) {
+export default async function RegisterPage(props: { searchParams: Promise<{ message: string, status?: string }> }) {
   const searchParams = await props.searchParams
 
   return (
@@ -98,6 +99,8 @@ export default async function RegisterPage(props: { searchParams: Promise<{ mess
             {searchParams?.message && (
               <FormMessageToast message={searchParams.message} />
             )}
+            
+            <RegistrationSuccessModal status={searchParams?.status} />
           </form>
 
 {/*           <form action={signInWithProvider} className="space-y-4 lg:space-y-0 lg:flex text-xs gap-2">
