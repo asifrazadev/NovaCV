@@ -6,7 +6,7 @@ version: "1"
 language: "en-US"
 
 reviews:
-  profile: "comprehensive" # options: chill, assertive, comprehensive
+  profile: "assertive" # options: chill, assertive, comprehensive
   request_changes_workflow: false
   high_level_summary: true
   poetic_summaries: false
