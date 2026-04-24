@@ -1,8 +1,6 @@
 # CodeRabbit Configuration
 # Documentation: https://docs.coderabbit.ai/getting-started/configure-coderabbit
 
-version: "1"
-
 language: "en-US"
 
 reviews:

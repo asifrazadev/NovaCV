@@ -1,6 +1,6 @@
 name: SonarQube Analysis
 
-on:
+'on':
   push:
     branches:
       - main
@@ -19,7 +19,7 @@ jobs:
           fetch-depth: 0
 
       - name: SonarQube Scan
-        uses: sonarsource/sonarqube-scan-action@v5
+        uses: sonarsource/sonarqube-scan-action@v6
         with:
           args: >
             -Dsonar.organization=asifrazadev
@@ -27,4 +27,4 @@ jobs:
             -Dsonar.qualitygate.wait=true
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
