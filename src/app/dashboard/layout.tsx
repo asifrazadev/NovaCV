@@ -11,9 +11,9 @@ import { ThemeToggle } from "@/components/theme-toggle"
 
 export default function DashboardLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   const pathname = usePathname()
   
   // Check if we are in the builder (e.g., /dashboard/resumes/[id])
