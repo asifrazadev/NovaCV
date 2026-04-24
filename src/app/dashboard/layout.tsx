@@ -15,7 +15,7 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   const pathname = usePathname()
-  
+
   // Check if we are in the builder (e.g., /dashboard/resumes/[id])
   const isBuilder = pathname?.includes("/dashboard/resumes/")
 
