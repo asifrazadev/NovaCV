@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { RichTextarea } from "@/components/ui/rich-textarea"
 import { Plus, Trash2, GripVertical, Link } from "lucide-react"
 import { DateRange, ListSection } from "./shared"
+import { v4 as uuidv4 } from "uuid"
 
 export function ExperienceSection() {
   const { updateSectionItem } = useBuilder()
@@ -65,7 +66,7 @@ export function ExperienceSection() {
                 size="sm"
                 className="h-7 gap-1 text-xs shrink-0"
                 onClick={() => {
-                  const newRole = { id: Math.random().toString(36).slice(2), title: "", startDate: "", endDate: "", isCurrent: false }
+                  const newRole = { id: uuidv4(), title: "", startDate: "", endDate: "", isCurrent: false }
                   updateSectionItem("experience", item.id, "roles", [...(item.roles ?? []), newRole])
                 }}
               >
