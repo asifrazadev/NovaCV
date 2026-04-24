@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { cn } from "@/lib/utils"
 
-export interface PasswordInputProps extends React.ComponentProps<"input"> {}
+export interface PasswordInputProps extends React.ComponentProps<"input"> { }
 
 const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
   ({ className, ...props }, ref) => {
@@ -42,6 +42,5 @@ const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
     )
   }
 )
-PasswordInput.displayName = "PasswordInput"
 
 export { PasswordInput }
