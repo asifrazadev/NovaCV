@@ -22,7 +22,14 @@ export async function GET(
   }
 
   // 2. Setup Host URL
-  const host = request.nextUrl.origin
+  let host = request.nextUrl.origin
+  
+  // Force http for localhost if we detect https being incorrectly reported
+  // or if we want to avoid SSL issues in dev
+  if (host.startsWith("https://localhost") || host.startsWith("https://127.0.0.1")) {
+    host = host.replace("https://", "http://")
+  }
+  
   const exportUrl = `${host}/resumes/${id}/export`
 
   // 3. Get Resume Metadata for Format
@@ -46,7 +53,7 @@ export async function GET(
     const chromiumAny = chromium as any
     
     browser = await puppeteer.launch({
-      args: chromiumAny.args || [],
+      args: [...(chromiumAny.args || []), "--ignore-certificate-errors", "--ignore-certificate-errors-spki-list"],
       defaultViewport: chromiumAny.defaultViewport || { width: 1280, height: 720 },
       executablePath: isLocal 
         ? "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
@@ -64,7 +71,7 @@ export async function GET(
         value: c.value,
         domain: request.nextUrl.hostname,
         path: "/",
-        secure: true,
+        secure: request.nextUrl.protocol === "https:",
         sameSite: "Lax" as const
       })))
     }
