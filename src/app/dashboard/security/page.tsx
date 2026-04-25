@@ -1,4 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { SubmitButton } from "@/components/submit-button"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -108,9 +109,9 @@ export default async function SecurityPage(props: { searchParams: Promise<{ mess
             </div>
             
             <div className="flex justify-end pt-2 border-t mt-4">
-              <Button type="submit" className="bg-primary hover:bg-primary/90">
+              <SubmitButton loadingText="Updating..." className="bg-primary hover:bg-primary/90">
                 Update Password
-              </Button>
+              </SubmitButton>
             </div>
           </form>
         </CardContent>

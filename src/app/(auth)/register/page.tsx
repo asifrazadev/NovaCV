@@ -1,6 +1,6 @@
 import { signup, signInWithProvider } from '@/actions/auth'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+import { SubmitButton } from '@/components/submit-button'
 import { Input } from '@/components/ui/input'
 import { PasswordInput } from '@/components/ui/password-input'
 import { Label } from '@/components/ui/label'
@@ -92,9 +92,9 @@ export default async function RegisterPage(props: { searchParams: Promise<{ mess
               </div>
             </div>
 
-            <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold h-11 transition-all shadow-md shadow-primary/10">
+            <SubmitButton loadingText="Creating account..." className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold h-11 transition-all shadow-md shadow-primary/10">
               Create account
-            </Button>
+            </SubmitButton>
 
             {searchParams?.message && (
               <FormMessageToast message={searchParams.message} />

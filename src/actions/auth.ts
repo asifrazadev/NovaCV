@@ -79,7 +79,7 @@ export async function logout() {
 export async function forgotPassword(formData: FormData) {
   const email = formData.get('email') as string
   const supabase = await createClient()
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
+  const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
 
   console.log('Attempting password reset for:', email)
   console.log('Redirect URL:', `${siteUrl}/auth/callback?next=/dashboard/security`)
@@ -156,7 +156,7 @@ export async function updateProfileMetadata(formData: FormData) {
   const fullName = formData.get('full_name') as string
   const title = formData.get('title') as string
   const bio = formData.get('bio') as string
-  
+
   const supabase = await createClient()
 
   const { error } = await supabase.auth.updateUser({

@@ -1,5 +1,5 @@
 import { resetPassword } from '@/actions/auth'
-import { Button } from '@/components/ui/button'
+import { SubmitButton } from '@/components/submit-button'
 import { PasswordInput } from '@/components/ui/password-input'
 import { Label } from '@/components/ui/label'
 import { FormMessageToast } from '@/components/form-message-toast'
@@ -76,9 +76,9 @@ export default async function ResetPasswordPage(props: { searchParams: Promise<{
               </div>
             </div>
 
-            <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold h-11 transition-all shadow-md shadow-primary/10">
+            <SubmitButton loadingText="Updating..." className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold h-11 transition-all shadow-md shadow-primary/10">
               Update Password
-            </Button>
+            </SubmitButton>
 
             {searchParams?.message && (
               <FormMessageToast message={searchParams.message} />
