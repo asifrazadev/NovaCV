@@ -5,7 +5,7 @@ import { ResumeData } from "@/types/resume"
 import { getTemplate } from "@/templates"
 import { PageContent } from "@/templates/modern"
 import { useDebounce } from "use-debounce"
-import { useBuilder } from "@/app/dashboard/resumes/[id]/builder-context"
+import { BuilderContext } from "@/app/dashboard/resumes/[id]/builder-context"
 
 interface PaginatedPreviewProps {
   data: ResumeData
@@ -20,7 +20,8 @@ const PAGE_SIZES: Record<string, { width: number; height: number }> = {
 }
 
 export function PaginatedPreview({ data, zoom }: PaginatedPreviewProps) {
-  const { mobileView } = useBuilder()
+  const context = React.useContext(BuilderContext)
+  const mobileView = context?.mobileView ?? "preview"
   const [debouncedData] = useDebounce(data, 300)
   const SelectedTemplate = getTemplate(data.metadata?.template || "modern").component
   const measureRef = useRef<HTMLDivElement>(null)

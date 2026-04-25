@@ -187,7 +187,7 @@ export async function toggleResumePublicStatus(id: string, isPublic: boolean) {
 
 export async function getPublicResumeById(id: string) {
   const supabase = await createClient()
-  
+
   // NOTE: Intentionally not requesting user auth here.
   // We rely on Supabase Row Level Security (RLS) to enforce that only
   // resumes with is_public = true (or owned by the current user) can be selected.

@@ -5,7 +5,7 @@ import { ResumeData, defaultResumeData } from "@/types/resume"
 import { updateResume } from "@/app/dashboard/resumes/actions"
 import { v4 as uuidv4 } from "uuid"
 
-interface BuilderContextType {
+export interface BuilderContextType {
   data: ResumeData
   setData: React.Dispatch<React.SetStateAction<ResumeData>>
   zoom: number
@@ -29,7 +29,7 @@ interface BuilderContextType {
   setMobileView: (view: "editor" | "preview") => void
 }
 
-const BuilderContext = React.createContext<BuilderContextType | undefined>(undefined)
+export const BuilderContext = React.createContext<BuilderContextType | undefined>(undefined)
 
 // Helper to deep merge objects
 function deepMerge(target: any, source: any) {
