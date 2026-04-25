@@ -8,7 +8,15 @@ export function FormMessageToast({ message }: { message: string }) {
 
   useEffect(() => {
     if (message && toastShown.current !== message) {
-      toast.error(message)
+      const isSuccess = message.toLowerCase().includes('success') || 
+                        message.toLowerCase().includes('sent') ||
+                        message.toLowerCase().includes('updated')
+      
+      if (isSuccess) {
+        toast.success(message)
+      } else {
+        toast.error(message)
+      }
       toastShown.current = message
     }
   }, [message])

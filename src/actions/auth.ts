@@ -50,7 +50,7 @@ export async function signInWithProvider(formData: FormData) {
   const provider = formData.get('provider') as unknown as Provider
   const supabase = await createClient()
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
 
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider,
@@ -74,4 +74,103 @@ export async function logout() {
 
   revalidatePath('/', 'layout')
   redirect('/login')
+}
+
+export async function forgotPassword(formData: FormData) {
+  const email = formData.get('email') as string
+  const supabase = await createClient()
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
+
+  console.log('Attempting password reset for:', email)
+  console.log('Redirect URL:', `${siteUrl}/auth/callback?next=/dashboard/security`)
+
+  const { error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `${siteUrl}/auth/callback?next=/reset-password`,
+  })
+
+  if (error) {
+    console.error('Supabase reset error:', error)
+    redirect(`/forgot-password?message=${error.message}`)
+  }
+
+  redirect('/forgot-password?message=Password reset link sent to your email')
+}
+
+export async function resetPassword(formData: FormData) {
+  const password = formData.get('password') as string
+  const confirmPassword = formData.get('confirm_password') as string
+  const oldPassword = formData.get('old_password') as string
+  const redirectTo = (formData.get('redirectTo') as string) || '/dashboard/security'
+
+  if (password !== confirmPassword) {
+    redirect(`${redirectTo}?message=Passwords do not match`)
+  }
+
+  const supabase = await createClient()
+
+  // If old password is provided, verify it first
+  if (oldPassword) {
+    const { data: { user } } = await supabase.auth.getUser()
+    if (user?.email) {
+      const { error: verifyError } = await supabase.auth.signInWithPassword({
+        email: user.email,
+        password: oldPassword,
+      })
+      if (verifyError) {
+        redirect(`${redirectTo}?message=Current password is incorrect`)
+      }
+    }
+  }
+
+  const { error } = await supabase.auth.updateUser({
+    password: password,
+  })
+
+  if (error) {
+    redirect(`${redirectTo}?message=${error.message}`)
+  }
+
+  redirect(`${redirectTo}?message=Password updated successfully`)
+}
+
+export async function updateEmail(formData: FormData) {
+  const email = formData.get('email') as string
+  const supabase = await createClient()
+
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
+
+  const { error } = await supabase.auth.updateUser({
+    email: email,
+  }, {
+    emailRedirectTo: `${siteUrl}/auth/callback?next=/dashboard/profile&message=Email updated successfully`,
+  })
+
+  if (error) {
+    redirect(`/dashboard/profile?message=${error.message}`)
+  }
+
+  redirect('/dashboard/profile?message=Confirmation link sent to both old and new email addresses')
+}
+
+export async function updateProfileMetadata(formData: FormData) {
+  const fullName = formData.get('full_name') as string
+  const title = formData.get('title') as string
+  const bio = formData.get('bio') as string
+  
+  const supabase = await createClient()
+
+  const { error } = await supabase.auth.updateUser({
+    data: {
+      full_name: fullName,
+      professional_title: title,
+      bio: bio
+    }
+  })
+
+  if (error) {
+    redirect(`/dashboard/profile?message=${error.message}`)
+  }
+
+  revalidatePath('/dashboard/profile')
+  redirect('/dashboard/profile?message=Profile updated successfully')
 }
