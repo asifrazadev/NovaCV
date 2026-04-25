@@ -80,7 +80,7 @@ export async function forgotPassword(formData: FormData) {
   const email = formData.get('email') as string
   const supabase = await createClient()
   const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
-
+  console.log(process.env.NEXT_PUBLIC_APP_URL)
   console.log('Attempting password reset for:', email)
   console.log('Redirect URL:', `${siteUrl}/auth/callback?next=/dashboard/security`)
 

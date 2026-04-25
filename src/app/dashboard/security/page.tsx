@@ -1,7 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { SubmitButton } from "@/components/submit-button"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { GitBranch, Mail, ShieldCheck } from "lucide-react"
 import { createClient } from "@/utils/supabase/server"
@@ -42,7 +41,7 @@ export default async function SecurityPage(props: { searchParams: Promise<{ mess
                 </span>
               )}
             </Button>
-            
+
             <Button variant="outline" className={`w-full justify-start h-12 ${isGithubConnected ? 'bg-green-500/5 border-green-500/20' : ''}`} disabled={isGithubConnected}>
               <GitBranch className={`mr-3 h-5 w-5 ${isGithubConnected ? 'text-green-500' : ''}`} />
               {isGithubConnected ? 'Connected with GitHub' : 'Connect GitHub Account'}
@@ -61,7 +60,7 @@ export default async function SecurityPage(props: { searchParams: Promise<{ mess
         <CardHeader className="bg-muted/30 py-4 border-b">
           <CardTitle className="text-xl">Change Password</CardTitle>
           <CardDescription>
-            {providers.length > 0 && !user?.email_confirmed_at 
+            {providers.length > 0 && !user?.email_confirmed_at
               ? "Set a password to enable email-based login alongside your social account."
               : "Update your password regularly to keep your account secure."}
           </CardDescription>
@@ -69,27 +68,27 @@ export default async function SecurityPage(props: { searchParams: Promise<{ mess
         <CardContent className="pt-6">
           <form action={resetPassword} className="space-y-4">
             <input type="hidden" name="redirectTo" value="/dashboard/security" />
-            
+
             <div className="grid gap-4">
               {providers.includes('email') && (
                 <div className="space-y-2">
                   <Label htmlFor="old_password">Current Password</Label>
-                  <PasswordInput 
-                    id="old_password" 
-                    name="old_password" 
+                  <PasswordInput
+                    id="old_password"
+                    name="old_password"
                     placeholder="••••••••"
                     required
                     className="bg-muted/20 border-border/50"
                   />
                 </div>
               )}
-              
+
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="password">New Password</Label>
-                  <PasswordInput 
-                    id="password" 
-                    name="password" 
+                  <PasswordInput
+                    id="password"
+                    name="password"
                     placeholder="••••••••"
                     required
                     className="bg-muted/20 border-border/50"
@@ -97,9 +96,9 @@ export default async function SecurityPage(props: { searchParams: Promise<{ mess
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="confirm_password">Confirm New Password</Label>
-                  <PasswordInput 
-                    id="confirm_password" 
-                    name="confirm_password" 
+                  <PasswordInput
+                    id="confirm_password"
+                    name="confirm_password"
                     placeholder="••••••••"
                     required
                     className="bg-muted/20 border-border/50"
@@ -107,7 +106,7 @@ export default async function SecurityPage(props: { searchParams: Promise<{ mess
                 </div>
               </div>
             </div>
-            
+
             <div className="flex justify-end pt-2 border-t mt-4">
               <SubmitButton loadingText="Updating..." className="bg-primary hover:bg-primary/90">
                 Update Password
