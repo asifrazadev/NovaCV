@@ -57,7 +57,7 @@ NovaCV is a high-fidelity, open-source resume builder designed for the modern jo
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/novacv.git
+   git clone https://github.com/asifrazadev/NovaCV.git
    cd novacv
    ```
 
