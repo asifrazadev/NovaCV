@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
-export type AIProvider = 'openai' | 'anthropic' | 'gemini' | 'openrouter' | 'custom'
+export type AIProvider = 'openai' | 'anthropic' | 'gemini' | 'openrouter' | 'ollama' | 'custom'
 
 interface AIState {
   provider: AIProvider
